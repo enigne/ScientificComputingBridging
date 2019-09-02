@@ -1,0 +1,234 @@
+%\documentclass[12pt]{article}
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{array}
+
+\usepackage{xcolor}
+\usepackage[colorlinks = true,
+            linkcolor = purple,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+
+
+\usepackage{geometry}\geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm,
+ }
+\setlength{\parindent}{0cm}
+\renewcommand{\baselinestretch}{1.10}
+\pagestyle{plain}
+
+\setlength{\parskip}{0.5em}
+
+
+\title{Scientific Computing, Bridging Course, 5.0 hp }
+\author{1TD045}
+\date{\small{Version from September 1, 2019}}
+% \author{Cheng Gong}
+% \date{Oct 26, 2018}
+
+\begin{document}
+
+\maketitle
+
+\setlength{\leftskip}{0em}
+\subsection*{Department in charge of the course}
+\setlength{\leftskip}{1em} 
+
+Department of Information Technology\\
+Division of Scientific Computing\\
+Polacksbacken, Building 2\\
+Postal address: Box 337, 751 05 Uppsala\\
+Student Office, Room 4204a: Office Hours Mon--Thu 10.00--12.30; Phone 018-4717604
+
+\setlength{\leftskip}{0em}
+\subsection*{Teachers}
+\setlength{\leftskip}{1em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+	\item Cheng Gong, \href{mailto:cheng.gong@it.uu.se}{cheng.gong@it.uu.se}, room ITC 2448
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\leftskip}{0em}
+\subsection*{Course literature}
+\setlength{\leftskip}{1em}
+[M]{\label{M}} Michael T. Heath, Scientific Computing⎯An Introductory Survey, Second Edition, McGraw-Hill, International Edition, 2002
+
+[A] Andreas Hellander, Stochastic Simulation and Monte Carlo Methods, Uppsala University, Department of Information Technology, 2009
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\leftskip}{0em}
+\subsection*{Course homepage}
+\setlength{\leftskip}{1em}
+All course-related information is collected at \url{http://studentportalen.uu.se}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\leftskip}{0em}
+\subsection*{Course outline}
+\setlength{\leftskip}{1em}
+The course consists of four modules. The theme of each module is indicated below:
+
+\begin{center}
+ 	\begin{tabular}{ c m{29em}   c m{19em} } 
+  	\emph{Module} & \emph{Theme}  \\
+ 	1 & Introduction to Computer Arithmetic and Matlab \\
+	2 & Systems of Linear Equations \\
+	3 & Ordinary Differential Equations \\
+	4 & Monte Carlo Methods \\
+	\end{tabular}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\leftskip}{0em}
+\subsection*{Recommended reading}
+
+\begin{center}
+ 	\begin{tabular}{ c m{29em}   c m{19em} } 
+  	\emph{Module} & \emph{Pages in the course book} \hyperlink{M}{[M]} \\
+ 	1 & xi--xii, 1--10 (not 1.2.5), 13 (first two paragraphs of 1.2.6), 16 (from 1.2.7)--28, 33 (from 1.4)--39 \\
+	2 & 49--79 (not 2.4.8), 84 (from 2.5)--85 (not 2.5.1), 91--92 \\
+	3 & 382--404 (not 9.3.5), 405--406, 413--414 \\
+	4 & This module is covered by Hellander’s compendium \\
+	\end{tabular}
+\end{center}
+
+There are Exercises at the end of each chapter in the course book. 
+% Solutions are available via the course web site. 
+% Please ask the teacher for the username andpassword required to access the solutions. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\leftskip}{0em}
+\subsection*{Training Activities}
+\setlength{\leftskip}{1em}
+
+The course contains three types of training to support your learning: Lab Sessions, Workout Exercises, and Mini Projects.
+
+\subsubsection*{Lab sessions}
+The course contains 6 sessions in the computer lab. Each session consists of a
+set of computer exercises. They have two objectives: (1) to introduce topics that
+will be covered in subsequent lectures, and (2) to introduce elements of Matlab
+programming. During the lab session, students will work individually or in
+pairs. There will be a teacher present to help out. 
+
+\subsubsection*{Workout exercises}
+
+In order to understand the course contents properly, it is necessary to exercise.
+Experience shows that it is useful to do a number of small exercises with pen
+and paper to get a good understanding of the details. For this reason, the
+students are presented with workout exercises to solve in each module. Students
+will work in pairs to solve these exercises, and they will get help from the
+teacher when they get stuck. 
+
+\subsubsection*{Mini projects}
+
+The exciting thing about scientific computing is to see how the computational
+algorithms are used to address applications where it is necessary to use
+computers in order to carry out the computations in reasonable time. The
+objective of the mini projects is to let the students experience this.
+
+Before working on each mini project, the teacher will give a brief introduction.
+Then the students are expected to work on the project individually. Discussions
+among the students and with the teacher are encouraged.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\leftskip}{0em}
+\subsection*{Reports}
+\setlength{\leftskip}{1em} 
+The educational idea behind the various training activities in the course is that
+they will help students to better understand the course contents. An important
+aspect of this is that the activities will involve feedback from students to
+teachers and vice versa. For this reason it is mandatory for students to report
+their progress:
+\begin{itemize}
+	\item Workout: written solutions should be shown to the teacher.
+	\item Mini Project: written reports should be handed in to the teacher.
+\end{itemize}
+
+
+The teacher will inform you about the deadline for each report. It is required
+that these deadlines are met. \emph{It is better to leave an incomplete report than to
+leave the report too late.}
+
+If you are unable to meet the deadline for special reasons, such as illness, then
+you should contact the teacher \emph{before} the deadline.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\leftskip}{0em}
+\subsection*{Workload}
+\setlength{\leftskip}{1em}
+
+The course gives 5 credit points. In the Swedish university system, credit points
+correspond to expected student workload. Roughly, the student is expected to
+work ca. 25--30 hours for each credit point. Consequently, you are expected to
+spend ca. 125--150 hours on the present course. The scheduled teaching sessions
+amount to ca. 40 hours. This leaves ca. 85--110 hours for your own course work
+outside the classroom.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\leftskip}{0em}
+\subsection*{Learning outcomes}
+\setlength{\leftskip}{1em}
+
+At the end of the course, you should be able to:
+
+\begin{itemize}
+	\item describe the key concepts covered in the course and perform tasks that require knowledge about these concepts;
+	\item in general terms explain the ideas behind, and be able to use algorithms
+	for solving linear systems, ordinary differential equations and for
+	Monte Carlo simulations;
+	\item analyze properties of the computational algorithms and mathematical models using the analytical tools presented in the course;
+	\item discuss suitable methods and algorithms given an application problem;
+	\item given a mathematical model, solve problems in science and engineering	by structuring the problem, choose appropriate numerical method and	generate solution using software and by writing programming code;
+	\item present, explain, summarize, evaluate and discuss solution methods and results.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\leftskip}{0em}
+\subsection*{Grades and Examination}
+\setlength{\leftskip}{1em}
+
+
+There are two grades for this course: Pass and Fail. The fundamental criterion
+for passing the course is to meet the goals stated above. In order to pass the
+course, you need to
+
+\begin{enumerate}
+	\item solve all the mandatory workout problems correctly,
+	\item get all the mini project reports approval by the teacher,
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\leftskip}{0em}
+\subsection*{Scholastic Dishonesty}
+\setlength{\leftskip}{1em} 
+Students may work together and discuss the
+homework problems with each other. Copying work done by others is an
+act of scholastic dishonesty and will be prosecuted to the full extent
+allowed by University policy. For more information on university
+policies regarding scholastic dishonesty, see the University of
+Uppsala's policy at http://www.it.uu.se/edu/fusk. 
+
+\setlength{\leftskip}{0em}
+\subsection*{Students with Disabilities}
+\setlength{\leftskip}{1em} 
+According to the University
+regulation all students with disabilities be guaranteed a learning
+environment that provides for reasonable accommodation of their
+disabilities. If you need help or want to get more information about
+it please contact the University of Uppsala's services for students
+with disabilities.  
+
+
+\end{document}
