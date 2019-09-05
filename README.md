@@ -1,10 +1,9 @@
 # ScientificComputingBridging
-Course Materials of Scientific Computing Bridging, Uppsala University
+Course Materials of Scientific Computing Bridging, Uppsala University, 2019 Autumn
 
 ## Labs
 
 The computer exercises of this course.
-
 The detailed instructions of the labs are given on student portal with the following structure:
 
 [Lab 2: Computer Arithmetic](./Lab/L2/)
