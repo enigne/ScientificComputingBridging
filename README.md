@@ -1,6 +1,10 @@
 # ScientificComputingBridging
 Course Materials of Scientific Computing Bridging, Uppsala University, 2019 Autumn
 
+## Lecture Notes
+
+[Introduction](https://prezi.com/mdculu3hvlmn/introduction-of-scientific-computing-bridging-course/)
+
 ## Labs
 
 The computer exercises of this course.
