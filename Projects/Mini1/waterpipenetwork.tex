@@ -7,6 +7,7 @@
 %\usepackage[dvips]{color}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage{hyperref}
 
 %\beteckning{Mini project}
 %\mottagare{Scientific Computing, Bridging Course}
@@ -101,10 +102,12 @@ p_6
 \noindent All equations except the first one have right-hand side equal to 0, and the right-hand-side of the first equation is the pressure in the water reservoir $p_1$.
 \\
 
-\noindent Your task is to write a Matlab script that solves this system and displays the result. Also, generate a bar graph showing the pressures of different nodes. It's important that output and figures are easy to understand even for someone not very involved in the project. Finally, change the program so that the user can input the pressure in the water reservoir, $p_1$, when running the program.   
+\noindent Your task is to write a Matlab/Python script that solves this system and displays the result. Also, generate a bar graph showing the pressures of different nodes. It's important that output and figures are easy to understand even for someone not very involved in the project. Finally, change the program so that the user can input the pressure in the water reservoir, $p_1$, when running the program.   
 
 \subsection*{Part~2}
-On the course website you can download the files \verb@water4720.mat@ and \verb@water6.mat@. The former contains data for a network with 4720 nodes, and the latter is data for the network i Part 1. Due to the size of the 4720 node network it has several water reservoirs. The data stored in the \verb@.mat@-files are two variables: the coefficient matrix $A$, and a vector called $sources$. The vector $sources$ contains the node indices corresponding to the water reservoirs. As in Part 1 the elements in the right-hand-side $b$ are equal to the pressure in the water reservoir when there is a reservoir in that node, and 0 elsewhere. Thus, you simply assign the pressure in the reservoir nodes into the corresponding entries in $b$, and the index number of these entries can be found in the vector $sources$. 
+On the course website you can download the files \verb@water4720.mat@ and \verb@water6.mat@. The former contains data for a network with 4720 nodes, and the latter is data for the network i Part 1. Due to the size of the 4720 node network it has several water reservoirs. The data stored in the \verb@.mat@-files are two variables: the coefficient matrix $A$, and a vector called $sources$. The vector $sources$ contains the node indices corresponding to the water reservoirs. 
+
+As in Part 1 the elements in the right-hand-side $b$ are equal to the pressure in the water reservoir when there is a reservoir in that node, and 0 elsewhere. Thus, you simply assign the pressure in the reservoir nodes into the corresponding entries in $b$, and the index number of these entries can be found in the vector $sources$. 
 \\
 Your task now is to write a program, a Matlab-function, that have the following structure:
 \begin{enumerate}[label=(\roman*)]
@@ -123,11 +126,17 @@ To solve this in a good way, let the name of the \verb@.mat@-file be input-param
   end
 \end{verbatim} 
 
-\noindent Implement the algorithm above in a Matlab function and test that the program works the way it is supposed to. Through trial and error, try to find as low pressure as possible in the water reservoirs, but with a average pressure larger than 20 bar. \\
+\noindent Implement the algorithm above in a Matlab/Python function and test that the program works the way it is supposed to. Through trial and error, try to find as low pressure as possible in the water reservoirs, but with a average pressure larger than 20 bar. \\
 
 \medskip
 \noindent {\bf The \verb@load@ command}\\
 If the name of the input file (the .mat-file) is stored as a text string in the variable \verb@namein@, the file can be read via the command \verb@load(namein)@. The suffix .mat is implicit in calls to \verb@load@, so there is no need to include the suffix in the file name text strings. See the Matlab help for more information.
+
+\medskip
+\noindent {\bf The \verb@scipy.io.loadmat()@ function}\\
+For Python user, you can load the \verb@.mat@ file with \verb@scipy.io.loadmat()@.
+More detailed examples and documents are given in the official tutorial of  \verb@scipy@ at \url{https://docs.scipy.org/doc/scipy/reference/tutorial/io.html}.
+
 
 \subsection*{Part~3}
 It takes a little bit of time to solve the problem in Part 2 when the network size gets big. When you run the 4720 node problem, there is a slight waiting time when the equation system is solved. As the matrix is the same all the time, there is some room there for improvements that would make the program more efficient. Implement these improvements.
