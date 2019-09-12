@@ -1,0 +1,137 @@
+\documentclass[11pt,a4paper]{article}
+
+% \usepackage[TDBbrev]{UUbrev}
+\usepackage[latin1]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage{graphicx}
+%\usepackage[dvips]{color}
+\usepackage{float}
+\usepackage{enumitem}
+
+%\beteckning{Mini project}
+%\mottagare{Scientific Computing, Bridging Course}
+
+\begin{document}
+\section*{Mini project 1: Water Pipe Network\footnote{Part~1 is based on
+Problem~5.1 in A.~Quarteroni \& F.~Saleri, \emph{Scientific Computing with MATLAB},
+Springer-Verlag Berlin Heidelberg, 2003}
+}
+
+This mini project is inspired by a research article:
+\begin{quotation}\noindent
+H. Jia, W. Wei, K. Xin, \emph{Hydraulic model for multi-sources reclaimed water pipe network based on EPANET and its applications in Beijing, China}, Front. Environ. Sci. Engin. China 2008, 2(1):57--62 (doi:10.1007/s117783-008-0013-0)
+\end{quotation}
+The article is about the design of a water pipe network in Beijing, for distribution of reclaimed water. Several issues are discussed, one of which is the water pressure at the network nodes.
+\\
+\\
+In this mini project you will do a similar computation as is discussed in the article, but you will focus on the computation of the node pressure. You will, however, not use the real network data from Beijing, but a simpler model network. To simplify the task, it has been subdivided into three parts. 
+\bigskip \bigskip
+\begin{figure}[hp]
+\centering
+\includegraphics[width=0.9\textwidth]{./network.pdf}
+\caption{The water pipe system in part 1}
+ \end{figure}
+
+\newpage
+
+\subsection*{Part~1}
+To understand the principle we will start off with a very small water pipe network with six nodes only, see the figure on first page. The network nodes are enumerated 1, 2, $\ldots$, 6.  A water reservoir is connected to node 1, and water taps to nodes 5 and 6, and the problem here is to find the pressure in the inner nodes (2, 3 \& 4). The pressure value for node $k$ is denoted by $p_k$. The pressure is given as the difference between the water pressure and the surrounding atmospheric pressure. Consequently, the pressure value 0 corresponds to the atmospheric pressure.
+\\
+\\
+The following relations are used to compute the pressure:
+\begin{enumerate}
+ \item In pipe $j$ the water flow speed $Q_j$ (m$^3$/s) can be expressed as:
+\begin{equation}
+ Q_j = k L \left(p_{in}-p_{out}\right)  \label{eq:Qj}
+\end{equation}
+where $1/k$ is the hydraulic resistance in the pipe, $L$ is the pipe length, $p_{in}$ is the pressure at inflow to the pipe and $p_{out}$ is the pressure at outflow from the same pipe. The inverse hydraulic resistance $k$ is measured in m$^2$/(bar\ s), the pressure in bar and the length in meter. In this case $k=0.001$ and constant. 
+\item The total inflow to a node equals the total outflow from the same node.
+\end{enumerate}
+
+\noindent The table contains values of $L$ for the pipes in our network:
+\par
+\begin{center}
+\begin{tabular}{|cl || cl |}\hline
+pipe  & $L$   & pipe & $L$    \\ \hline
+1       & 300   & 4      & 600   \\ \hline
+2       & 500   & 5      & 500    \\ \hline
+3       & 500   & 6      & 500    \\ \hline
+\end{tabular}
+\end{center}
+\par
+\noindent
+Moreover, the pressure in the water reservoir is 10~bar and the pressure  $p$ at the water outlets is ca. 0~bar.
+\\
+\noindent Relation~2 above can be expressed as follows for the inner nodes:
+\begin{eqnarray*}
+\rm{Node\ 2:} &\ & Q_1 = Q_2 + Q_{3}\\
+\rm{Node\ 3:} &\ & Q_3 = Q_4 + Q_6\\
+\rm{Node\ 4:} &\ & Q_2 + Q_4  = Q_5
+\end{eqnarray*}
+
+\noindent Inserting relationship (1) into these formulas and using the values from the table yields the following system of equations for the four pressure values  $p_1,\ldots, p_6$:
+
+\begin{equation}
+\left(\begin{array}{cccccc}
+    1.0   &0        & 0      &   0      &   0    & 0     \\
+    0.3   & -1.3  &  0.5  &   0.5   &   0    & 0     \\
+    0      &   0.5  & -1.6  &  0.6   &   0    & 0.5  \\
+    0      &   0.5  &   0.6 & -1.6   &   0.5 & 0     \\
+  0        &   0     &   0     &   0      &  1.0  & 0     \\
+  0        &   0     &   0     &   0     &   0     & 1.0 
+ \end{array}\right)
+\left(\begin{array}{c} 
+p_1  \\ 
+p_2  \\
+p_3  \\ 
+p_4  \\
+p_5   \\
+p_6
+\end{array}\right) =
+\left(\begin{array}{c} 
+10 \\
+0    \\
+0    \\
+0    \\
+0    \\
+0
+\end{array}\right)
+\label{eq:matsys}
+\end{equation}\\
+\noindent All equations except the first one have right-hand side equal to 0, and the right-hand-side of the first equation is the pressure in the water reservoir $p_1$.
+\\
+
+\noindent Your task is to write a Matlab script that solves this system and displays the result. Also, generate a bar graph showing the pressures of different nodes. It's important that output and figures are easy to understand even for someone not very involved in the project. Finally, change the program so that the user can input the pressure in the water reservoir, $p_1$, when running the program.   
+
+\subsection*{Part~2}
+On the course website you can download the files \verb@water4720.mat@ and \verb@water6.mat@. The former contains data for a network with 4720 nodes, and the latter is data for the network i Part 1. Due to the size of the 4720 node network it has several water reservoirs. The data stored in the \verb@.mat@-files are two variables: the coefficient matrix $A$, and a vector called $sources$. The vector $sources$ contains the node indices corresponding to the water reservoirs. As in Part 1 the elements in the right-hand-side $b$ are equal to the pressure in the water reservoir when there is a reservoir in that node, and 0 elsewhere. Thus, you simply assign the pressure in the reservoir nodes into the corresponding entries in $b$, and the index number of these entries can be found in the vector $sources$. 
+\\
+Your task now is to write a program, a Matlab-function, that have the following structure:
+\begin{enumerate}[label=(\roman*)]
+\item Input the  water pipe network (i.e. load the mat-file, see information below)
+\item Input pressure in the water reservoir nodes and create $b$
+\item Compute the pressures in the network
+\item Calculate and display the average pressure
+\item Ask if the user want to try again (choosing other reservoir pressure-values). If the user type \textless Return\textgreater \thinspace on keyboard the program will repeat from item (ii) above,  and the user can choose new pressure values. If any other key on keyboard is chosen, the program will exit. 
+\end{enumerate}
+It is important that the same program works for different pipeline networks, i.e. for different \verb@.mat@-files. Thus, the same program should work for both \verb@water4720.mat@ and \verb@water6.mat@. \\
+To solve this in a good way, let the name of the \verb@.mat@-file be input-parameter to your function. To solve point (v) above, you can use a while-loop:
+\begin{verbatim}
+  loop = ' ' ;  % Assign empty string to enter while-loop
+  while isempty(loop)
+         ...
+  end
+\end{verbatim} 
+
+\noindent Implement the algorithm above in a Matlab function and test that the program works the way it is supposed to. Through trial and error, try to find as low pressure as possible in the water reservoirs, but with a average pressure larger than 20 bar. \\
+
+\medskip
+\noindent {\bf The \verb@load@ command}\\
+If the name of the input file (the .mat-file) is stored as a text string in the variable \verb@namein@, the file can be read via the command \verb@load(namein)@. The suffix .mat is implicit in calls to \verb@load@, so there is no need to include the suffix in the file name text strings. See the Matlab help for more information.
+
+\subsection*{Part~3}
+It takes a little bit of time to solve the problem in Part 2 when the network size gets big. When you run the 4720 node problem, there is a slight waiting time when the equation system is solved. As the matrix is the same all the time, there is some room there for improvements that would make the program more efficient. Implement these improvements.
+
+\end{document}
+
+
