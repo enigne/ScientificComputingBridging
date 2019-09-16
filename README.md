@@ -1,6 +1,8 @@
 # ScientificComputingBridging
 Course Materials of Scientific Computing Bridging, Uppsala University, 2019 Autumn
 
+*NOTE*: If ipython notebook is not rendered properly, you can use [nbviewer](https://nbviewer.jupyter.org/) to view this repository, such as [https://nbviewer.jupyter.org/github/enigne/ScientificComputingBridging/tree/master/](https://nbviewer.jupyter.org/github/enigne/ScientificComputingBridging/tree/master/)
+
 ## Lecture Notes
 
 [Introduction](https://prezi.com/mdculu3hvlmn/introduction-of-scientific-computing-bridging-course/)
