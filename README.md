@@ -11,6 +11,8 @@ Course Materials of Scientific Computing Bridging, Uppsala University, 2019 Autu
 
 [System of Linear Equations](https://prezi.com/zpr234tz5ute/system-of-linear-equations/)
 
+[Ordinary Differential Equations, part 1](https://prezi.com/-kywdjouuy0h/ordinary-differential-equations/)
+
 ## Labs
 
 The computer exercises of this course.
