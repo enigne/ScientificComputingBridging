@@ -13,6 +13,8 @@ Course Materials of Scientific Computing Bridging, Uppsala University, 2019 Autu
 
 [Ordinary Differential Equations, part 1](https://prezi.com/-kywdjouuy0h/ordinary-differential-equations/)
 
+[Ordinary Differential Equations, part 2](https://prezi.com/blzh8dodfvb8/ordinary-differential-equations-part-2/)
+
 ## Labs
 
 The computer exercises of this course.
