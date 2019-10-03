@@ -1,0 +1,103 @@
+\documentclass[11pt,a4paper]{article}
+
+%\usepackage[TDBbrev]{UUbrev}
+\usepackage[latin1]{inputenc}
+%\usepackage[swedish]{babel}
+\usepackage{graphicx}
+\usepackage[dvips]{color}
+
+%\beteckning{Miniprojekt}
+%\mottagare{Beräkningsvetenskap II}
+
+\begin{document}
+\section*{Mini Project: Genetic Oscillator }
+\emph{Organisms such as animals and human beings have internal clocks to handle cyclical changes in the environment, for example the diurnal rythm. In this mini project, you will simulate the molecular mechanism that regulates such internal clocks.}
+\par\medskip\noindent
+This mini project is based on the research article
+\begin{quotation}\noindent
+  Jos\'{e} M. G. Vilar, Hao Yuan Kueh,
+  Naama Barkai, Stanislas Leibler, \emph{Mechanisms of noice-resistance in
+  genetic oscillator}, PNAS April 30, 2002 vol. 99 no. 9 page 5988-5992 
+ \end{quotation}
+ The article is distributed together with the mini project description.
+
+\subsection*{Background}
+Our environment contains many cyclic processes, such as the diurnal rythm of light and darkness. Many organisms use molecular mechanisms known as "circadian clocks", to adapt to such changes. As explained in the article by Vilar et al.: ''A positive element activates genes coupled to the circadian clock. It simultaneously promotes the expression of a negative element, which in turn represses the positive element. The cycle completes itself upon degradation of the negative element and reexpression of the positive element.'' In their article, they use a circadian clock model containing two proteins: an activator protein $A$ and a repressor protein $B$.  The corresponding activator and repressor genes are denoted by $D_A$ and $D_R$, respectively. ($D'_A$ and $D'_R$ denote the same genes with $A$ and $R$, respectively, bound to them.)  See the article for a more detailed explanation.\\
+
+{\noindent} Mathematically, the model can be described as a system of ordinary differential equations:
+\begin{eqnarray}
+\frac{d D_A}{dt}&=& \theta_A D'_A - \gamma_A D_A A
+\nonumber\\
+\frac{d D_R}{dt}&=& \theta_R D'_R - \gamma_R D_R A \nonumber\\
+\frac{d D'_A}{dt}&=& \gamma_A D_A A - \theta_A D'_A
+\nonumber\\
+\frac{d D'_R}{dt}&=& \gamma_R D_R A - \theta_R D'_R \nonumber\\
+\frac{d M_A}{dt}&=& \alpha'_A D'_A + \alpha_A D_A - \delta_{M_A}M_A
+\nonumber\\
+\frac{d A}{dt}&=&\beta_A M_A + \theta_A D'_A + \theta_R D'_R -
+A(\gamma_A D_A + \gamma_R D_R + \gamma_C R + \delta_A) \nonumber\\
+\frac{d M_R}{dt}&=& \alpha'_R D'_R + \alpha_R D_R - \delta_{M_R}M_R \nonumber\\
+\frac{d R}{dt}&=& \beta_R M_R - \gamma_C A R + \delta_A C - \delta_R R \nonumber\\
+\frac{d C}{dt}&=& \gamma_C A R - \delta_A C \nonumber
+\end{eqnarray}
+The variables $A$, $R$, $D_A$, $D'_A$, $D_R$, $D'_R$ are explained in the text above. The other variables in the model are explained in the article, Fig.\,1. The description in the article presumes that the reader is familiar with genetics, but for this mini project, it is not necessary to understand the biochemical details.
+
+
+\subsection*{Simulation of the circadian clock}
+Write a program to simulate the circadian clock based on the ODE model from the article. Use your program to study how the numbers of molecules of $A$ and $R$, respectively, vary during 200 hours. You should be able to reproduce the results shown in the article, Fig.\,2.
+
+You should choose appropriate Matlab/Python routines to solve the problem. It is important to design the program in such a way that it is easy to change parameter values, etc.
+\par\medskip\noindent
+Use the following initial values:\\
+ $D_A = D_R = 1$ mol,\\
+ $D'_A = D'_R = M_A = M_R = A =
+R = C = 0$ mol.
+\par\medskip\noindent
+In addition, use the following values for the model parameters:\\
+$\alpha_A=50$ h$^{-1}$, 
+$\alpha'_A =500$ h$^{-1}$, 
+$\alpha_R =0.01$ h$^{-1}$, 
+$\alpha'_R =50$ h$^{-1}$, \\
+$\beta_A =50$ h$^{-1}$, 
+$\beta_R = 5$ h$^{-1}$, \\
+$\delta_{M_A} =10$ h$^{-1}$,
+$\delta_{M_R} = 0.5$ h$^{-1}$, 
+$\delta_A = 1$ h$^{-1}$, 
+$\delta_R =0.2$ h$^{-1}$,\\
+$\gamma_A = 1$ mol$^{-1}$ h$^{-1}$,
+$\gamma_R = 1$ mol$^{-1}$ h$^{-1}$,
+$\gamma_C = 2$ mol$^{-1}$ h$^{-1}$,\\
+$\theta_A = 50$ h$^{-1}$,
+$\theta_R = 100$ h$^{-1}$.
+
+
+\subsection*{Some scientific computing issues in this context}
+
+\begin{itemize}
+\item In your program you will have used one of Matlab/Python ODE solvers. Describe the arguments and/or experimental investigations behind your choice of solver.\\
+\item Compare two of Matlab's built-in ODE solvers, {\tt ode45} and {\tt ode15s}, with regard to their choice of step size. If you are using the Python solver {\tt scipy.integrate.solve\_ivp}, compare `RK45' and `BDF' methods.
+Both of these use variable step size. Study their step size selection mechanisms experimentally. Plot the step sizes against the discrete points in time, and compare the corresponding plot of the solution curves. To this end, the Matlab command {\tt subplot} will be useful (see below), or in Python similar figure can be generated by {\tt matplotlib}. In these experiments it is sufficient to simulate 48 hours.
+Try to explain the results.
+\item Use \verb@odeset@ to set a certain tolerance in Matlab or \verb@rtol, atol@ in Python. Then measure the cpu time for running the simulation with \verb@ode45@ (RK45) and \verb@ode15s@ (BDF), respectively. Which of the two ODE solvers is fastest? Vary the tolerance and investigate how the cpu time changes as a consequence of this.
+\end{itemize}
+
+\subsection*{Hints}
+\begin{itemize}
+\item It is recommended to use the same names for the Matlab/Python variables as for the variables in the mathematical model. For example, let the model variable $A$ be represented by Matlab/Python variable {\tt A}, etc. This makes it easier to check that the code is a correct implementation of the mathematical model.
+\item Be careful when you implement the right-hand-side. It is very easy to miss parantheses, a sign or get wrong coefficient somewhere. You might have to go through your Matlab/Python implementation line by line to check if it is correct.
+\item If you want to compare two plots with each other, it is useful to place them in the same figure window. This can be achieved with the {\tt subplot} command. See the following example:
+\begin{verbatim}  
+  subplot(2,1,1);
+  plot(t,y1);
+  subplot(2,1,2);
+  plot(t,y2);
+\end{verbatim}
+In the first line of the code above, the first two arguments to \verb@subplot@ say that we want to place 2~rows and 1~column of plots in the same figure window. The third argument says that the next plot should be placed in position~1 (this will be the position at the top of the column of plots). The second code line plots {\tt y1} in that position. The third line says that we want the next plot to be in position~2 (still with 2~rows and 1~column of plots), and finally the fourth line plots {\tt y2} in that position
+\end{itemize}
+
+\subsection*{If you get inspired to do more (not mandatory)}
+
+ Make your own implementation of Heun's method. Then apply it to the Circadian Clock problem and compare with Matlab/Python built-in ODE solvers.
+
+\end{document}
+
