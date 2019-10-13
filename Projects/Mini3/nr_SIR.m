@@ -1,9 +1,8 @@
 function nr = nr_SIR( )
-% nr = nr_predprey()
 %
-% Stoichiometry matrix, nr, for the vilar oscillator.
+% Stoichiometry matrix, nr, for the SIR.
 % The variables (corresponding to the columns in nr) are ordered as:
-%   y1  y2
+%   S  I  R
 %
 
 nr = zeros(7, 3);

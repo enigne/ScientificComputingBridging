@@ -1,7 +1,6 @@
 function w = prop_SIR(u, p)
 %
-% w = prop_predprey(u, p)
-% Propensities, w, for the Predator-Prey system.
+% Propensities, w, for the SIR model.
 % 
 % Input: u - the current state. 
 %        p - the parameters used to calculate the propensities 
