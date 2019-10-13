@@ -1,0 +1,100 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage[dvips]{color}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{theorem}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\def\fatx{\mathbf{x}}
+\newtheorem{theorem}{Theorem}
+\newcommand{\matlab}{\texttt{Matlab}}
+\newcommand{\comment}[1]{{\bf #1}}
+
+\newcounter{ex}
+\newcounter{cex}
+\newenvironment{ex}{\refstepcounter{ex}\par\noindent\textbf{Exercise \theex}\newline\par\noindent}{\newline}
+\newenvironment{cex}{\refstepcounter{cex}\par\noindent\textbf{Computer exercise \thecex}\newline\par\noindent}{\newline}
+
+
+
+\begin{document}
+\section*{Mini Project: \\Genetic Oscillator and Stochastic models}
+\emph{In this mini project, you will see how a deterministic and a stochastic model for simulating a circadic clock sometimes lead to different results in a crucial way. This mini project is based on the same article that you used in the previous mini project. This article has been very influential in the emerging area of Systems Biology. In the previous mini project you implemented a deterministic model based on ODE, the reaction rate equations. In the present project, we will simulate the same phenomenon with a stochastic algorithm.}
+\par\medskip\noindent
+
+\section{Introduction}
+Systems biology is a relatively young research area that is large and rapidly growing. The objective is to study the mechanisms of biological systems, primarily on the cell level, by formulating mathematical models and carrying out simulations based on those models. Inspiration for the analysis of the models comes from many classical areas of research, such as mathematics, automatic control, and scientific computing, so this is an interdisciplinary area of research.
+
+\noindent The research article that is the basis for this mini project was one of the first articles in systems biology to point out that the deterministic reaction rate equations did not give a sufficiently accurate description of biochemical systems. This is because the concentrations of molecules inside cells are rather low and cell volumes are very small. For example, the volume of an \emph{E.\,coli} bacterie is approximately $10^{-15} $ liter. As a consequence, some kinds of protein molecules exist in very small numbers, say 10--100 molecules, within the cell. Then, it is relevant to count each indiviudual molecule and to use a discrete, stochastic model instead of a continuous, deterministic one.
+
+\noindent You have already seen an introduction to the biochemical system in the previous mini project, where you used the reaction rate equations to simulate it. In the present mini project, you will you a stochastic simulation instead. The stochastic model for the problem is:
+\begin{align}
+ 	\nonumber
+  	\left. \begin{array}{rcl}
+      		D_{a}' & \xrightarrow{\theta_{a} D_{a}'} & D_{a}	\\
+      		D_{a}+A & \xrightarrow{\gamma_{a} D_{a} A} & D_{a}'	\\
+      		D_{r}' & \xrightarrow{\theta_{r} D_{r}'} & D_{r}	\\
+      		D_{r}+A & \xrightarrow{\gamma_{r} D_{r} A} & D_{r}'
+    	\end{array} \right\}
+  	& \left. \begin{array}{rcl}
+      		\emptyset & \xrightarrow{\alpha_{a}' D_{a}'} & M_{a}	\\
+      		\emptyset & \xrightarrow{\alpha_{a} D_{a}} & M_{a}	\\
+      		M_{a} & \xrightarrow{\delta_{ma} M_{a}} & \emptyset	\\
+    	\end{array} \right\}
+  	\left. \begin{array}{rcl}
+      		\emptyset & \xrightarrow{\beta_{a} M_{a}} & A		\\
+      		\emptyset & \xrightarrow{\theta_{a} D_{a}'} & A		\\
+      		\emptyset & \xrightarrow{\theta_{r} D_{r}'} & A		\\
+      		A &\xrightarrow{\delta_{a} A} & \emptyset		\\
+      		A+R &\xrightarrow{\gamma_{c} A R} & C
+    	\end{array} \right\}						\\
+  	\label{eq:circadian}
+  	\left. \begin{array}{rcl}
+      		\emptyset & \xrightarrow{\alpha_{r}' D_{r}'} & M_{r}	\\
+      		\emptyset & \xrightarrow{\alpha_{r} D_{r}} & M_{r}	\\
+      		M_{r} & \xrightarrow{\delta_{mr} M_{r}} & \emptyset
+    	\end{array} \right\}
+  	& \left. \begin{array}{rcl}
+      		\emptyset & \xrightarrow{\beta_{r} M_{r}} & R		\\
+      		R & \xrightarrow{\delta_{r} R} & \emptyset		\\
+      		C & \xrightarrow{\delta_{a} C} & R
+    	\end{array} \right\}
+\end{align}
+\\
+
+\noindent
+The parameters of the model are given in Table~\ref{tab:vilar}. The complete propensity functions $\omega_r, \quad r=1\ldots 18$ are given above the arrows.  
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{llllllllll}
+\hline
+$\alpha_A$ & $\alpha_{a}'$ & $\alpha_r$ & $\alpha_{r}'$ & $\beta_a$ & $\beta_r$ & $\delta_{ma}$ & $\delta_{mr}$\\
+\hline
+$50.0$ & $500.0$ & $0.01$ &50 & $50.0$ & $5.0$ & $10.0$ & $0.5$\\
+\hline
+$\delta_a$& $\delta_r$ & $\gamma_a$ & $\gamma_r$ & $\gamma_c$ & $\Theta_a$ & $\Theta_r$\\
+\hline
+$1.0$ & $0.2$ & $1.0$ & $1.0$ & $2.0$ & $50.0$ & $100.0$\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Parameters for the Vilar oscillator.}
+\label{tab:vilar}
+\end{table}
+
+\section{The project}
+Download the Matlab function {\tt SSA.m} from the course page. Also download \texttt{Matlab} files that give reaction propensities and the stochiometry vectors for the predator-prey problem. These files can be used as templates.
+
+\noindent Use your stochastic simulation program to simulate trajectories. Investigate what happens in the three cases $\delta_r=0.2$, $\delta_r=0.08$, and $\delta_r=0.01$. Also, run a simulation based on the ODE model from the previous mini project for $\delta_r=0.08$, and compare the result with the corresponding stochastic solution. What happens? \\
+Compare your results with those in the article.\\
+
+\noindent Submit a single .pdf file including your code, results and comments as report.
+
+\end{document}
