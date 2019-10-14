@@ -15,6 +15,7 @@ Course Materials of Scientific Computing Bridging, Uppsala University, 2019 Autu
 
 [Ordinary Differential Equations, part 2](https://prezi.com/blzh8dodfvb8/ordinary-differential-equations-part-2/)
 
+[Monte Carlo methods](https://prezi.com/-oqwbsusxyb5/monte-carlo-methods/)
 ## Labs
 
 The computer exercises of this course.
