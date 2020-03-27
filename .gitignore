@@ -1,0 +1,71 @@
+# Figures
+*.pdf
+*.eps
+*.png
+*.jpg
+
+# Temprary files
+*~
+*.swp
+
+# Compiled source
+*.o
+*.la
+*.a
+*.so
+*.dylib
+
+# Latex files
+*.aux
+*.log
+*.out
+*.bbl
+*.nav
+*.snm
+*.toc
+*.blg
+
+# data files
+*.vtk
+*.vtu
+*.results
+*.result
+*.dat
+*.txt
+*.ptd
+*.pvtu
+*.bin
+*.mpg
+*.avi
+*.jpeg
+*.log
+*.names
+*.pvsm
+*.ep
+*.cmake
+
+
+# Compressed files
+*.xz
+*.zip
+*.gz
+*.zs-old
+
+# OS X files
+*.DS_Store
+*.DS_Store?
+
+# Building files
+build/
+
+# Meshfiles
+mesh.*
+
+# Elmer start infor
+ELMERSOLVER*
+TEST*
+
+# Ipython checkpoint
+.ipynb_checkpoints
+.ipynb_checkpoints/*
+__pycache__

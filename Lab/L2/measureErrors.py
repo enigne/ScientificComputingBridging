@@ -5,16 +5,19 @@ Created on Tue Sep  3 09:37:11 2019
 
 Functions for lab 2
 
+@revised date: 2020-03-27
 @author: chenggong
+@email: enigne@gmail.com
 """
 
 import numpy as np
 
 
 def absrelerror(corr=None, approx=None):
-    """ Illustrates the relative and absolute error (rewritten from Matlab script)
-    The program calculates the absolute and relative error. For vectors and matrices,
-    numpy.linalg.norm() is used.
+    """ 
+    Illustrates the relative and absolute error.
+    The program calculates the absolute and relative error. 
+    For vectors and matrices, numpy.linalg.norm() is used.
     
     Parameters
     ----------
@@ -28,25 +31,23 @@ def absrelerror(corr=None, approx=None):
     None
     """
     
-    print('*------------------------------------------------------------*')
+    print('*----------------------------------------------------------*')
     print('This program illustrates the absolute and relative error.')
-    print('*------------------------------------------------------------*')
+    print('*----------------------------------------------------------*')
 
     # Check if the values are given, if not ask to input
     if corr is None:
         corr = float(input('Give the correct, exact number: '))
     if approx is None:
-        approx = float(input('Give the approximative, calculated number: '))
+        approx = float(input('Give the approximated, calculated number: '))
 
     # be default 2-norm/Frobenius-norm is used
     abserror = np.linalg.norm(corr - approx)
     relerror = abserror/np.linalg.norm(corr)
 
     # Output
-    print('Absolute error: ' + str(abserror))
-    print('Relative error: ' + str(relerror) + ', or in percent: ' +
-          str(relerror*100))
-
+    print(f'Absolute error: {abserror}')
+    print(f'Relative error: {relerror}')
 
 def ForwardDiff(fx, x, h=0.001):
     """
