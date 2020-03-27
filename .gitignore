@@ -3,6 +3,8 @@
 *.eps
 *.png
 *.jpg
+*.svg
+*.ps
 
 # Temprary files
 *~
@@ -24,6 +26,8 @@
 *.snm
 *.toc
 *.blg
+*.fls
+*.fdb_*
 
 # data files
 *.vtk
@@ -43,7 +47,7 @@
 *.pvsm
 *.ep
 *.cmake
-
+*.mat
 
 # Compressed files
 *.xz
